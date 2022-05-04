@@ -25,7 +25,7 @@ def getindex(parameter):
             return index
 
 def calculateMovingAverage(readings, ValuessizeinMovingAverage):
-    Rangewindows = createRangewindow(readings, ValuessizeinMovingAverage)
+    Rangewindows = createRangeWindow(readings, ValuessizeinMovingAverage)
     movingAverages = [round((sum(range) / len(range)), 2) for range in Rangewindows]
     return movingAverages
                             
