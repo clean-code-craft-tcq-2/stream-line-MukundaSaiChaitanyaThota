@@ -29,7 +29,7 @@ def calculateMovingAverage(readings, ValuessizeinMovingAverage):
     movingAverages = [round((sum(range) / len(range)), 2) for range in Rangewindows]
     return movingAverages
                             
-def processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInput, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, convertCSVFormat, printOnConsole):
+def processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInput, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, convertCSVFormat):
     stream = readFromConsole()
     mergedreadings =  processInput(stream)
     statisticsReading = []
@@ -37,8 +37,9 @@ def processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInp
         readings = extractEachParameterReadings(mergedreadings, parameter)
         movingAverage = calculateMovingAverage(readings, ValuessizeinMovingAverage)
         minMaxReading = calculateMinMaxReading(readings)
+        formattedString = convertCSVFormat(parameter,minMaxReading,movingAverage)
         statisticsReading.append(formattedString)
-        printOnConsole(formattedString)
+        print(formattedString)
     return statisticsReading
 
 def createRangeWindow(readings, ValuessizeinMovingAverage):
@@ -50,9 +51,8 @@ def calculateMinMaxReading(readings):
     maxReading = max(readings)
     return {'min': minReading, 'max': maxReading}
 
-def printOnConsole(string):
-    print(string)
-    return True
+def convertCSVFormat(parameter,minMaxReading,movingAverage):
+  return f'{parameter}:{minMaxReading},{movingAverage}'
 
 if __name__ == '__main__':  # pragma: no cover
-  processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInput, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, printOnConsole)
+  processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInput, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading,convertCSVFormat)
