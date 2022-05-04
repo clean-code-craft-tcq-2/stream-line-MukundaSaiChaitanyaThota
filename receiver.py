@@ -26,7 +26,7 @@ def getindex(parameter):
 
 def calculateMovingAverage(readings, ValuessizeinMovingAverage):
     Rangewindows = createRangewindow(readings, ValuessizeinMovingAverage)
-    movingAverages = [round((sum(range) / len(range), 2) for range in Rangewindows]
+    movingAverages = [round((sum(range) / len(range)), 2) for range in Rangewindows]
     return movingAverages
                             
 def processInputReadings(ValuessizeinMovingAverage, readFromConsole,  processInput, extractEachParameterReadings, calculateMovingAverage, calculateMinMaxReading, convertCSVFormat, printOnConsole):
