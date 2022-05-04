@@ -1,7 +1,7 @@
 import sys
 
 ValuessizeinMovingAverage = 5
-parameters = ["soc", "temp"]
+parameters = ["SOC", "temperature"]
 
 def readFromConsole():
     lines = sys.stdin.readlines()
